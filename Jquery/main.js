@@ -7,6 +7,7 @@ $(document).ready(function () {
     points = 0; /*set pointes 0 default*/
     clicks = 0; /*set score 0 by default*/
     timer = 3;
+    t = 0;
     /*Shuffe the array randomaly */
     function shuffle(array) {
         array.sort(() => Math.random() - 0.5);
@@ -16,6 +17,18 @@ $(document).ready(function () {
     for (i = 0; i < arrayNum.length; i++) {
         $(".flip-card-inner").append(' <div class="flip-card-inner2 rollover"><div class="flip-card-front "> <h2>front</h2></div><div class="flip-card-back" > <img src="' + arrayNum[i] + '" > </div></div>');
     }
+    /*time taken*/
+    setInterval(function () {
+        t = t + 1
+        $("#time").text("0 hr " + t + " Sec");
+
+
+
+
+    }, 1000);
+
+
+
     /*this is for starting few sec to view the back of box's*/
     var myinterval = setInterval(function () {
         if (timer == 0) {
@@ -60,18 +73,18 @@ $(document).ready(function () {
                 var firstClick = $(this) /*first click this declare */
                 $(this).addClass("rollover");
                 var r = $(this).find(".flip-card-back img").attr("src"); /* first vale on first click*/
-                console.log(r);
-                var currentIndex = $(this).index();
-                console.log(currentIndex);
+
+                var currentIndex = $(this).index(); /*index of the box */
+
                 $(".flip-card-inner .flip-card-inner2").each(function (index) {
                     if (currentIndex == $(this).index()) {
-
+                        /*nothing will happen */
                     } else {
                         if ($(this).hasClass("rollover")) {
                             var r2 = $(this).find(".flip-card-back img").attr("src"); /*value of 2nd clcik*/
 
                             if (r == r2) {
-                                points = points + 100;
+                                points = points + 100; /*calclulate points on match */
                                 $("#points").text(points);
 
                                 var thisele = $(this) /*  2nd clcik to get the 2nd val */
@@ -85,7 +98,7 @@ $(document).ready(function () {
                                 if (points == 0) {
 
                                 } else {
-                                    points = points - 50;
+                                    points = points - 20;
                                     $("#points").text(points);
                                 }
 
