@@ -2,25 +2,98 @@
 <html>
 
 <head>
+    <!--BootStrap CDN-->
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/jscript" src="Jquery/main.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!--Link style and Js-->
     <link rel="stylesheet" href="css/style.css">
+    <script type="text/jscript" src="Jquery/main.js"></script>
 </head>
 
 <body>
-
-
-    <h3>Achive max points in 20 clicks:</h3>
-    <p>Points: <span id="points">0</span> | Clicks: <span id="click">0</span> | Time: <span id="time">0 Sec</span></p>
-
-    <div class="flip-card">
-        <div class="overLay">
-            <p id="timer">3</p>
+    <!--Navigation Bar Start-->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Memory Games </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Code</a></li>
+                    <li><a href="#">Contact US</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="flip-card-inner">
+    </nav>
+    <!--Navigation Bar End -->
+    <!--Center BAr-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 left" style="background-color:lavenderblush;">
+                <!-- <h3>Achive max points in 20 clicks:</h3>-->
+                <p>Points: <span id="points"><br>0</span></p>
+                <p>Turns: <span id="click"><br>0</span></p>
+                <p>Time <span id="time"><br>0 Sec</span></p>
+                <button class="btn fullScreen" onclick="openFullscreen();"><i class="bi bi-fullscreen"></i> Play in Fullscreen</button>
+            </div>
+            <div class="col-sm-6 center" style="background-color:lavenderblush;">
+                <div class="flip-card">
+                    <div class="overLay">
+                        <p id="timer">3</p>
+                    </div>
+                    <div class="flip-card-inner">
 
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-3 right" style="background-color:lavenderblush;">
+                <p>Menu</p>
+                <button class="btn"><i class="bi bi-music-note-beamed"></i>Sound</button>
+                <button class="btn" id="reload"><i class="bi bi-arrow-clockwise"></i> Reload</button>
+                <button class="btn"><i class="fa fa-close"></i> Close</button>
+            </div>
         </div>
     </div>
+    <!-- Center End-->
+    <!-- Footer Start-->
+    <div class="container-fluid footer text-center">
+        <div class="col-sm-4">
+            <h6>Created By- : Ashmeet Singh Jandu</h6>
+        </div>
+        <div class="col-sm-4">
+            <h6>Email-ashmeetsingh.2010@gmail.com</h6>
+        </div>
+        <div class="col-sm-1 icon">
+            <i class="fa fa-facebook"></i>
+        </div>
+        <div class="col-sm-1 icon">
+            <i class="fa fa-twitter"></i>
+        </div>
+        <div class="col-sm-1 icon">
+            <i class="fa fa-linkedin"></i>
+        </div>
+        <div class="col-sm-1 icon">
+            <i class="fa fa-youtube"></i>
+        </div>
+    </div>
+
+    <!-- Footer End -->
+
 
 </body></html>

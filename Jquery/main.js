@@ -15,47 +15,37 @@ $(document).ready(function () {
     shuffle(arrayNum); /*Shuffle funtion*/
     /* creating box */
     for (i = 0; i < arrayNum.length; i++) {
-        $(".flip-card-inner").append(' <div class="flip-card-inner2 rollover"><div class="flip-card-front "> <h2>front</h2></div><div class="flip-card-back" > <img src="' + arrayNum[i] + '" > </div></div>');
+        $(".flip-card-inner").append(' <div class="flip-card-inner2 rollover"><div class="flip-card-front "> <img src="https://i.pinimg.com/736x/f3/09/28/f30928e4df8826714ada61ef5790eadf.jpg" ></div><div class="flip-card-back" > <img src="' + arrayNum[i] + '" class="img-responsive"> </div></div>');
     }
     /*time taken*/
+
     setInterval(function () {
         t = t + 1
         $("#time").text("0 hr " + t + " Sec");
-
-
-
-
     }, 1000);
-
-
-
     /*this is for starting few sec to view the back of box's*/
-    var myinterval = setInterval(function () {
-        if (timer == 0) {
-            clearInterval(myinterval)
-        } else {
-            timer = timer - 1;
-            $("#timer").text(timer)
-        }
-    }, 1000)
-
-    setTimeout(function () {
-
-        $(".flip-card-inner .flip-card-inner2").each(function () {
-            $(this).removeClass("rollover");
-        })
-        $(".overLay").fadeOut();
-    }, 3000)
+        var myinterval = setInterval(function () {
+            if (timer == 0) {
+                clearInterval(myinterval)
+            } else {
+                timer = timer - 1;
+                $("#timer").text(timer)
+            }
+        }, 1000)
+        setTimeout(function () {
+            $(".flip-card-inner .flip-card-inner2").each(function () {
+                $(this).removeClass("rollover");
+            })
+            $(".overLay").fadeOut();
+        }, 3000)
 
     /*click on box to rotate*/
     $(".flip-card-inner2").click(function (index) {
         var checkArray = []
-
         $(".flip-card-inner .flip-card-inner2").each(function () {
             if ($(this).hasClass("done")) {
                 checkArray.push(1)
             }
-
         })
         if (checkArray.length == arrayNum.length) {
             /*calulate if all the boxes are revieled */
@@ -65,11 +55,7 @@ $(document).ready(function () {
             $("#click").text(clicks);
 
             var elmId = $(this).attr('id');
-
-            if ($(this).hasClass("done")) {
-
-
-            } else {
+            if ($(this).hasClass("done")) {} else {
                 var firstClick = $(this) /*first click this declare */
                 $(this).addClass("rollover");
                 var r = $(this).find(".flip-card-back img").attr("src"); /* first vale on first click*/
@@ -91,9 +77,7 @@ $(document).ready(function () {
                                 setTimeout(function () {
                                     thisele.addClass("done").removeClass("rollover");
                                     firstClick.addClass("done").removeClass("rollover");
-
                                 }, 1000)
-
                             } else {
                                 if (points == 0) {
 
@@ -108,19 +92,31 @@ $(document).ready(function () {
                                     firstClick.removeClass("rollover");
 
                                 }, 800)
-
-
                             }
                         }
-
-
                     }
-
-
                 })
             }
         }
     });
 
+    $("#reload").click(function () {
+        location.reload();
+    });
 
 });
+/*Full Screen open*/
+var elem = document.documentElement;
+
+function openFullscreen() {
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) {
+        /* Safari */
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+        /* IE11 */
+        elem.msRequestFullscreen();
+    }
+}
+/*Full Screen open End*/
