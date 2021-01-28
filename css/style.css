@@ -3,8 +3,9 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
-.heading{
-background-color: antiquewhite;
+
+.heading {
+    background-color: antiquewhite;
     text-align: center;
     font-family: ui-sans-serif;
 }
@@ -35,12 +36,6 @@ p {
     align-content: center;
 }
 
-/*
-.right {
-    text-align: center;
-
-}*/
-
 .col-sm-6 {
     height: 90%;
 
@@ -57,7 +52,7 @@ p {
     padding: 4%;
     margin-top: 10%;
     margin-bottom: 10%;
-margin-left: 20%;
+    margin-left: 20%;
     display: inline-block;
     position: relative;
 }
@@ -197,8 +192,8 @@ h6 {
     font-size: 2em;
     border-radius: 50%;
     width: 7%;
-display: initial;
-transition: transform .6s;
+    display: initial;
+    transition: transform .6s;
 }
 
 .icon:hover {

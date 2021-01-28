@@ -15,7 +15,7 @@ $(document).ready(function () {
     shuffle(arrayNum); /*Shuffle funtion*/
     /* creating box */
     for (i = 0; i < arrayNum.length; i++) {
-        $(".flip-card-inner").append (' <div class="flip-card-inner2 rollover"><div class="flip-card-front "> <img src="https://i.pinimg.com/736x/f3/09/28/f30928e4df8826714ada61ef5790eadf.jpg" ></div><div class="flip-card-back" > <img src="' + arrayNum[i] + '" class="img-responsive"> </div></div>');
+        $(".flip-card-inner").append(' <div class="flip-card-inner2 rollover"><div class="flip-card-front "> <img src="https://i.pinimg.com/736x/f3/09/28/f30928e4df8826714ada61ef5790eadf.jpg" ></div><div class="flip-card-back" > <img src="' + arrayNum[i] + '" > </div></div>');
     }
     /*time taken*/
 
@@ -24,20 +24,20 @@ $(document).ready(function () {
         $("#time").text("0 hr " + t + " Sec");
     }, 1000);
     /*this is for starting few sec to view the back of box's*/
-        var myinterval = setInterval(function () {
-            if (timer == 0) {
-                clearInterval(myinterval)
-            } else {
-                timer = timer - 1;
-                $("#timer").text(timer)
-            }
-        }, 1000)
-        setTimeout(function () {
-            $(".flip-card-inner .flip-card-inner2").each(function () {
-                $(this).removeClass("rollover");
-            })
-            $(".overLay").fadeOut();
-        }, 3000)
+    var myinterval = setInterval(function () {
+        if (timer == 0) {
+            clearInterval(myinterval)
+        } else {
+            timer = timer - 1;
+            $("#timer").text(timer)
+        }
+    }, 1000)
+    setTimeout(function () {
+        $(".flip-card-inner .flip-card-inner2").each(function () {
+            $(this).removeClass("rollover");
+        })
+        $(".overLay").fadeOut();
+    }, 3000)
 
     /*click on box to rotate*/
     $(".flip-card-inner2").click(function (index) {
