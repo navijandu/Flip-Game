@@ -2,10 +2,13 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+    background-image: url("https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/12/Gradient_builder_2.jpg?auto=format&q=60&fit=max&w=930");
+
+    background-size: cover;
 }
 
 .heading {
-    background-color: antiquewhite;
+
     text-align: center;
     font-family: ui-sans-serif;
 }
@@ -151,6 +154,17 @@ img {
     z-index: 9999;
 }
 
+/*.start {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 1;
+    z-index: 9999999;
+
+}*/
 
 
 #timer {
@@ -169,14 +183,14 @@ img {
 .footer {
     position: relative;
     left: 0;
-    /* bottom: 0; */
+    bottom: 0;
     width: 100%;
     background-color: #2f2f2f;
     color: #ffffff;
     padding: 1%;
-    /* justify-content: center; */
-    /* align-items: center; */
-    opacity: 0.8;
+    opacity: 0.5;
+
+
 }
 
 .footer:hover {
