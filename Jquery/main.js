@@ -45,74 +45,88 @@ $(document).ready(function () {
             }, 3000)
         }
 
-    })
+        /*Addind Audio*/
+        var audioElement = document.createElement('audio');
+        audioElement.setAttribute('src', 'http://p128.ve.vc/data/48/37057/278600/Bring%20The%20Pain%20-%20Sound%20Shikari%20(DjPunjab.Com).mp3');
+        audioElement.addEventListener('ended', function () {
+            this.play();
+        }, false);
 
-
-    /*click on box to rotate*/
-    $(".flip-card-inner2").click(function (index) {
-        var checkArray = []
-        $(".flip-card-inner .flip-card-inner2").each(function () {
-            if ($(this).hasClass("done")) {
-                checkArray.push(1)
-            }
+        audioElement.play();
+        $("#playsound").click(function () {
+            audioElement.pause();
         })
-        if (checkArray.length == arrayNum.length) {
-            /*calulate if all the boxes are revieled */
-            alert("Thanks for playing ")
-        } else {
-            clicks = clicks + 1; /*  Increasing the clicks */
-            $("#click").text(clicks);
 
-            var elmId = $(this).attr('id');
-            if ($(this).hasClass("done")) {} else {
-                var firstClick = $(this) /*first click this declare */
-                $(this).addClass("rollover");
-                var r = $(this).find(".flip-card-back img").attr("src"); /* first vale on first click*/
 
-                var currentIndex = $(this).index(); /*index of the box */
 
-                $(".flip-card-inner .flip-card-inner2").each(function (index) {
-                    if (currentIndex == $(this).index()) {
-                        /*nothing will happen */
-                    } else {
-                        if ($(this).hasClass("rollover")) {
-                            var r2 = $(this).find(".flip-card-back img").attr("src"); /*value of 2nd clcik*/
+        /*click on box to rotate*/
+        $(".flip-card-inner2").click(function (index) {
+            var checkArray = []
+            $(".flip-card-inner .flip-card-inner2").each(function () {
+                if ($(this).hasClass("done")) {
+                    checkArray.push(1)
+                }
+            })
+            if (checkArray.length == arrayNum.length) {
+                /*calulate if all the boxes are revieled */
+                alert("Thanks for playing ")
+            } else {
+                clicks = clicks + 1; /*  Increasing the clicks */
+                $("#click").text(clicks);
 
-                            if (r == r2) {
-                                points = points + 100; /*calclulate points on match */
-                                $("#points").text(points);
+                var elmId = $(this).attr('id');
+                if ($(this).hasClass("done")) {} else {
+                    var firstClick = $(this) /*first click this declare */
+                    $(this).addClass("rollover");
+                    var r = $(this).find(".flip-card-back img").attr("src"); /* first vale on first click*/
 
-                                var thisele = $(this) /*  2nd clcik to get the 2nd val */
-                                setTimeout(function () {
-                                    thisele.addClass("done").removeClass("rollover");
-                                    firstClick.addClass("done").removeClass("rollover");
-                                }, 1000)
-                            } else {
-                                if (points == 0) {
+                    var currentIndex = $(this).index(); /*index of the box */
 
-                                } else {
-                                    points = points - 20;
+                    $(".flip-card-inner .flip-card-inner2").each(function (index) {
+                        if (currentIndex == $(this).index()) {
+                            /*nothing will happen */
+                        } else {
+                            if ($(this).hasClass("rollover")) {
+                                var r2 = $(this).find(".flip-card-back img").attr("src"); /*value of 2nd clcik*/
+
+                                if (r == r2) {
+                                    points = points + 100; /*calclulate points on match */
                                     $("#points").text(points);
+
+                                    var thisele = $(this) /*  2nd clcik to get the 2nd val */
+                                    setTimeout(function () {
+                                        thisele.addClass("done").removeClass("rollover");
+                                        firstClick.addClass("done").removeClass("rollover");
+                                    }, 1000)
+                                } else {
+                                    if (points == 0) {
+
+                                    } else {
+                                        points = points - 20;
+                                        $("#points").text(points);
+                                    }
+
+                                    var thisele = $(this)
+                                    setTimeout(function () {
+                                        thisele.removeClass("rollover");
+                                        firstClick.removeClass("rollover");
+
+                                    }, 800)
                                 }
-
-                                var thisele = $(this)
-                                setTimeout(function () {
-                                    thisele.removeClass("rollover");
-                                    firstClick.removeClass("rollover");
-
-                                }, 800)
                             }
                         }
-                    }
-                })
+                    })
+                }
             }
-        }
+        });
     });
-
     $("#reload").click(function () {
         location.reload();
     });
 
+    /*   $("#close").click(function () {
+          self.close();
+      });*/
 });
 /*Full Screen open*/
 var elem = document.documentElement;
