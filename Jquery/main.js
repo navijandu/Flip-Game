@@ -53,9 +53,14 @@ $(document).ready(function () {
         }, false);
 
         audioElement.play();
-        $("#playsound").click(function () {
+        $("#play").click(function () {
+            audioElement.play();
+        })
+
+        $("#pause").click(function () {
             audioElement.pause();
         })
+
 
 
 
