@@ -1,26 +1,18 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <!--BootStrap CDN-->
-    <!-- Add icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Latest compiled and minified CSS -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <!--Link style and Js-->
-    <link rel="stylesheet" href="css/style.css">
-    <script type="text/jscript" src="Jquery/main.js"></script>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Flip Game</title>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
 <body>
-    <!--Navigation Bar Start-->
-    <nav class="navbar navbar-inverse">
+
+    <nav class="navbar navbar-inverse custom-nav">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -28,86 +20,133 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Memory Games </a>
+                <a class="navbar-brand brand-logo" href="#">
+                    <i class="fa fa-clone"></i> Memory Master
+                </a>
             </div>
+
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Code</a></li>
-                    <li><a href="#">Contact US</a></li>
+                    <li><a href="#">Play</a></li>
+                    <li><a href="#">Scores</a></li>
+                    <li><a href="#">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <!--Navigation Bar End -->
-    <!--Navigation Bar End -->
-    <div class="conainer">
+
+    <div class="container">
         <div class="row heading">
             <div class="col-md-12">
-                <h3>Click on the icon to flip the image</h3>
+                <div class="title-box">
+                    <h1>🧠 Memory Challenge</h1>
+                    <p class="subtitle">Flip the cards, find every pair, and beat your best score.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row scoreboard-row">
+            <div class="col-xs-6 col-sm-3">
+                <div class="score-card">
+                    <span class="score-label">Points</span>
+                    <span class="score-value" id="points">0</span>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="score-card">
+                    <span class="score-label">Turns</span>
+                    <span class="score-value" id="click">0</span>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="score-card">
+                    <span class="score-label">Time</span>
+                    <span class="score-value" id="time">0 Sec</span>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="score-card best-card">
+                    <span class="score-label">Best Score</span>
+                    <span class="score-value" id="bestScore">0</span>
+                </div>
             </div>
         </div>
     </div>
-    <!--Navigation Bar End -->
-    <!--Center BAr-->
-    <div class="container-fluid">
-        <div class="row content">
-            <div class="col-xs-12 col-sm-12 col-md-3 left">
-                <!-- <h3>Achive max points in 20 clicks:</h3>-->
-                <p>Points: <span id="points"><br>0</span></p>
-                <p>Turns: <span id="click"><br>0</span></p>
-                <p>Time <span id="time"><br>0 Sec</span></p>
-                <button class="btn fullScreen" onclick="openFullscreen();"><i class="bi bi-fullscreen"></i> Play in Fullscreen</button>
 
-                <div class="music">
-                    <i class="bi bi-play " id="play"></i>
-                    <i class="bi bi-pause-circle" id="pause"></i>
-                </div>
+    <div class="container-fluid game-wrap">
+        <div class="row content">
+            <div class="col-xs-12 col-sm-12 col-md-3 left panel-box">
+                <h3 class="panel-title">Game Controls</h3>
+
+                <button class="btn btn-primary game-btn fullScreen" onclick="openFullscreen()">
+                    <i class="fa fa-arrows-alt"></i> Fullscreen
+                </button>
+
+                <button class="btn btn-success game-btn" id="startGame">
+                    <i class="fa fa-play"></i> Start Game
+                </button>
+
+                <button class="btn btn-info game-btn" id="reload">
+                    <i class="fa fa-refresh"></i> Restart
+                </button>
+
+                <button class="btn btn-danger game-btn" id="close">
+                    <i class="fa fa-close"></i> Close
+                </button>
             </div>
+
             <div class="col-xs-12 col-sm-12 col-md-6" id="center">
                 <div class="flip-card">
                     <div class="overLay">
-                        <p id="timer"> 3 </p>
+                        <p id="timer">3</p>
                     </div>
-                    <div class="flip-card-inner">
-                    </div>
+                    <div class="flip-card-inner" id="gameBoard"></div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-3 right">
-                <p>Menu</p>
-                <a href="#center"><button class="btn play" id="playsound"><i class="bi bi-controller"></i> STAR GAME</button></a>
-                <button class="btn" id="reload"><i class="bi bi-arrow-clockwise"></i> Reload</button>
-                <button class="btn" id="close"><i class="fa fa-close"></i> Close</button>
+
+            <div class="col-xs-12 col-sm-12 col-md-3 right panel-box">
+                <h3 class="panel-title">Tips</h3>
+                <ul class="tips-list">
+                    <li>Watch the preview carefully</li>
+                    <li>Match pairs with fewer turns</li>
+                    <li>Try to beat your best score</li>
+                    <li>Finish faster for a cleaner win</li>
+                </ul>
             </div>
         </div>
     </div>
-    <!-- Center End-->
-    <!-- Footer Start-->
-    <div class="container-fluid footer text-center">
-        <div class="col-sm-12 col-md-4">
-            <h6>Created By : Ashmeet Singh Jandu</h6>
-        </div>
-        <div class="col-sm-12 col-md-4">
-            <h6>Email - ashmeetsingh.2010@gmail.com</h6>
-        </div>
-        <div class="col-sm-12 col-md-1 icon">
-            <i class="fa fa-facebook"></i>
-        </div>
-        <div class="col-sm-12 col-md-1 icon">
-            <a href="https://twitter.com/ashmeet_jandu" class="twitter"><i class="fa fa-twitter"></i></a>
-        </div>
-        <div class="col-sm-12 col-md-1 icon">
-            <a href="https://www.linkedin.com/in/ashmeetsinghjandu/" class="linkedin"> <i class="fa fa-linkedin"></i>
-            </a>
-        </div>
-        <div class="col-sm-12 col-md-1 icon">
-            <a href="https://www.youtube.com/channel/UC4zYXwdyBMaRlbSbLrrPaYA" class="youtube"><i class="fa fa-youtube"></i>
-            </a>
+
+    <div class="container-fluid footer">
+        <div class="row footer-row">
+            <div class="col-sm-12 col-md-4">
+                <h6>Created By: Ashmeet Singh Jandu</h6>
+            </div>
+
+            <div class="col-sm-12 col-md-4">
+                <h6>Email: ashmeetsingh.2010@gmail.com</h6>
+            </div>
+
+            <div class="col-sm-12 col-md-4 social-wrap">
+                <a href="#" class="icon"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/ashmeet_jandu" target="_blank" class="icon"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/ashmeetsinghjandu/" target="_blank" class="icon"><i class="fa fa-linkedin"></i></a>
+                <a href="https://www.youtube.com/channel/UC4zYXwdyBMaRlbSbLrrPaYA" target="_blank" class="icon"><i class="fa fa-youtube"></i></a>
+            </div>
         </div>
     </div>
 
-    <!-- Footer End -->
+    <div id="winPopup" class="popup-overlay">
+        <div class="popup-box">
+            <div class="popup-icon">🏆</div>
+            <h2>You Won!</h2>
+            <p id="finalStats">Great job!</p>
+            <button class="btn btn-success popup-btn" id="playAgain">Play Again</button>
+        </div>
+    </div>
 
-
-</body></html>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="script/app.js"></script>
+</body>
+</html>
